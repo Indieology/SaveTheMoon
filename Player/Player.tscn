@@ -71,3 +71,6 @@ autostart = true
 
 [node name="Gun" type="Position2D" parent="."]
 position = Vector2( 7.75, 7.75 )
+
+[node name="ShootDirection" type="Position2D" parent="."]
+position = Vector2( 17.75, 7.75 )
