@@ -42,6 +42,7 @@ script = ExtResource( 2 )
 position = Vector2( -294, 79 )
 scale = Vector2( 12, 12 )
 frames = SubResource( 7 )
+frame = 2
 playing = true
 flip_h = true
 
@@ -49,7 +50,7 @@ flip_h = true
 position = Vector2( 471, 64 )
 scale = Vector2( 12, 12 )
 frames = SubResource( 7 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Moon" type="StaticBody2D" parent="."]
