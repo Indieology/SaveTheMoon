@@ -69,5 +69,5 @@ wait_time = 0.55
 one_shot = true
 autostart = true
 
-[node name="Gun" type="Node2D" parent="."]
+[node name="Gun" type="Position2D" parent="."]
 position = Vector2( 7.75, 7.75 )

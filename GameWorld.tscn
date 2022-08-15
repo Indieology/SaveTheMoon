@@ -32,30 +32,34 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 102.005
 
-[node name="StaticBody" type="StaticBody2D"]
+[node name="World" type="Node2D"]
 position = Vector2( 656, 280 )
 script = ExtResource( 2 )
 
-[node name="Background" type="AnimatedSprite" parent="."]
+[node name="SpaceBackground" type="Node2D" parent="."]
+
+[node name="Background" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -294, 79 )
 scale = Vector2( 12, 12 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 flip_h = true
 
-[node name="Background2" type="AnimatedSprite" parent="."]
+[node name="Background2" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( 471, 64 )
 scale = Vector2( 12, 12 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Moon" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Moon"]
 position = Vector2( -48, 80 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moon"]
 visible = false
 position = Vector2( -48, 80 )
 shape = SubResource( 2 )
