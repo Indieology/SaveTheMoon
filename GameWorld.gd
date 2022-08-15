@@ -5,13 +5,20 @@ export var player_speed : int = 60
 onready var pivot = $Pivot
 onready var player = $Pivot/Player
 
+func _ready():
+	player.play("Ready")
+
 func _physics_process(delta):
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		move_left(delta)
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("move_right"):
 		move_right(delta)
 	else:
-		player.play("Idle")
+		if $Pivot/Player/ReadyTimer.is_stopped():
+			player.play("Idle")
+	
+	if Input.is_action_just_pressed("shoot"):
+		pass
 
 
 func move_left(delta):

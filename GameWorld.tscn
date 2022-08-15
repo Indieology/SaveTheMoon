@@ -1,44 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Player/buddie4 sprite sheet x1.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameWorld.gd" type="Script" id=2]
 [ext_resource path="res://World Art/Baren.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 102.005
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 544, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 544, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 544, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 544, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 5.0
-} ]
 
 [node name="StaticBody" type="StaticBody2D"]
 position = Vector2( 656, 280 )
@@ -57,8 +24,4 @@ shape = SubResource( 2 )
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2( -48, 80 )
 
-[node name="Player" type="AnimatedSprite" parent="Pivot"]
-position = Vector2( 8, -184 )
-scale = Vector2( 4, 4 )
-frames = SubResource( 4 )
-animation = "Walk"
+[node name="Player" parent="Pivot" instance=ExtResource( 1 )]
