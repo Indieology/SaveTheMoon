@@ -36,6 +36,7 @@ func _physics_process(delta):
 		
 		
 		this_bullet.velocity = $ShootDirection.global_position - player_gun.global_position
+		this_bullet.look_at($ShootDirection.global_position)
 
 func move_left(delta):
 	pivot.rotation_degrees -= player_speed * delta

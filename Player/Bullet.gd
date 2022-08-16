@@ -9,5 +9,6 @@ func _physics_process(delta):
 	#can use collision_info to detect collisions with the bullet
 	var collision_info = move_and_collide(velocity.normalized() * delta * bullet_speed)
 	
+	
 	if $Lifetime.is_stopped():
 		queue_free()
