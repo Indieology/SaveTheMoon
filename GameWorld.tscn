@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameWorld.gd" type="Script" id=2]
 [ext_resource path="res://World Art/Baren.png" type="Texture" id=3]
 [ext_resource path="res://World Art/space2_4-frames.png" type="Texture" id=4]
+[ext_resource path="res://UI/redblue (1).png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
@@ -36,13 +37,26 @@ radius = 102.005
 position = Vector2( 656, 280 )
 script = ExtResource( 2 )
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TextureProgress" type="TextureProgress" parent="UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -222.0
+margin_top = -43.0
+margin_right = 222.0
+value = 100.0
+texture_progress = ExtResource( 5 )
+
 [node name="SpaceBackground" type="Node2D" parent="."]
 
 [node name="Background" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -50,7 +64,7 @@ flip_h = true
 position = Vector2( -496, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -58,7 +72,7 @@ flip_h = true
 position = Vector2( -48.0001, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 flip_v = true
@@ -67,14 +81,14 @@ flip_v = true
 position = Vector2( 400, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Background2" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -48, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 2
+frame = 3
 playing = true
 flip_v = true
 
@@ -82,12 +96,13 @@ flip_v = true
 position = Vector2( 400, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 flip_v = true
 
 [node name="Moon" type="StaticBody2D" parent="."]
+position = Vector2( 32, 0 )
 
 [node name="Sprite" type="Sprite" parent="Moon"]
 position = Vector2( -48, 80 )
@@ -100,7 +115,7 @@ position = Vector2( -48, 80 )
 shape = SubResource( 2 )
 
 [node name="Pivot" type="Node2D" parent="."]
-position = Vector2( -48, 80 )
+position = Vector2( -16, 80 )
 
 [node name="Player" parent="Pivot" instance=ExtResource( 1 )]
 
