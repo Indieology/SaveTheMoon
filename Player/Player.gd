@@ -9,6 +9,7 @@ var power: int = 0
 onready var pivot = get_parent()
 onready var player_start_timer = $ReadyTimer
 onready var player_gun = $Gun
+onready var energy_label = get_parent().get_parent().get_node("UI/CurrentEnergy")
 
 onready var bullet = preload("res://Player/Bullet.tscn")
 
@@ -54,5 +55,5 @@ func move_right(delta):
 
 func increase_power():
 	power += 1
-	#update hud 
+	energy_label.text = str(power)
 

@@ -82,5 +82,6 @@ position = Vector2( 17.75, 7.75 )
 [node name="PowerUpDetector" type="Area2D" parent="."]
 
 [node name="DetectorShape" type="CollisionShape2D" parent="PowerUpDetector"]
+visible = false
 position = Vector2( 0, 10 )
 shape = SubResource( 13 )

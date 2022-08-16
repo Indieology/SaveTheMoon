@@ -29,6 +29,7 @@ autostart = true
 [node name="EnemyDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyDetector"]
+visible = false
 position = Vector2( -1, 1 )
 rotation = 1.5708
 shape = SubResource( 1 )
