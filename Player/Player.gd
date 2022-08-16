@@ -1,5 +1,7 @@
 extends AnimatedSprite
 
+#make system to collect power from drops, which can be spent to upgrade your moon health(make moon bigger?), add a turret to a predefined set of locations if there is one left,         boot upgrade for speed?  
+
 export var player_speed : int = 60
 
 onready var pivot = get_parent()
