@@ -57,6 +57,7 @@ texture_progress = ExtResource( 5 )
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_h = true
 
@@ -64,6 +65,7 @@ flip_h = true
 position = Vector2( -496, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_h = true
 
@@ -71,6 +73,7 @@ flip_h = true
 position = Vector2( -48.0001, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_h = true
 flip_v = true
@@ -79,13 +82,14 @@ flip_v = true
 position = Vector2( 400, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Background2" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -48, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_v = true
 
@@ -93,7 +97,7 @@ flip_v = true
 position = Vector2( 400, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 flip_h = true
 flip_v = true
@@ -124,7 +128,19 @@ position = Vector2( -16, 80 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Blue Enemy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 256, -24 )
+[node name="Blue Enemy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -384, -144 )
+
+[node name="Blue Enemy3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -432, 208 )
+
+[node name="Blue Enemy4" parent="." instance=ExtResource( 6 )]
+position = Vector2( -32, 344 )
+
+[node name="Blue Enemy5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 296, 304 )
+
+[node name="Blue Enemy6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 384, -200 )
 
 [editable path="Pivot/Player"]

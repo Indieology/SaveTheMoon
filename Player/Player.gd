@@ -4,6 +4,8 @@ extends AnimatedSprite
 
 export var player_speed : int = 60
 
+var power: int = 0
+
 onready var pivot = get_parent()
 onready var player_start_timer = $ReadyTimer
 onready var player_gun = $Gun
@@ -49,3 +51,8 @@ func move_right(delta):
 	pivot.rotation_degrees += player_speed * delta
 	flip_h = false
 	play("Walk")
+
+func increase_power():
+	power += 1
+	#update hud 
+

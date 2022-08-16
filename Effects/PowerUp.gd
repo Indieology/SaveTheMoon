@@ -18,3 +18,9 @@ func _physics_process(delta):
 
 func set_start_position(position):
 	global_position = position
+
+
+func _on_PlayerDetector_area_entered(area):
+	if area.name == "PowerUpDetector":
+		area.get_parent().increase_power()
+		queue_free()
