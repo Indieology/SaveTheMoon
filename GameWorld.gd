@@ -16,15 +16,20 @@ func _ready():
 
 func _on_EnemySpawnTimer_timeout():
 	#select random spawn point
+	var last_enemy_spawn_location = 1
 	if enemies_left_in_wave > 0:
 		randomize()
 		var random_point = rand_range(1, spawn_points.get_child_count())
-		var this_random_point = spawn_points.get_child(random_point)
+		if random_point == last_enemy_spawn_location:
+			_on_EnemySpawnTimer_timeout()
+		else:
+			last_enemy_spawn_location = random_point
+			var this_random_point = spawn_points.get_child(random_point)
 		
-		var this_enemy = enemy1.instance()
-		get_node("Enemies").add_child(this_enemy)
-		this_enemy.global_position = this_random_point.global_position
+			var this_enemy = enemy1.instance()
+			get_node("Enemies").add_child(this_enemy)
+			this_enemy.global_position = this_random_point.global_position
 		
-		spawn_timer.start()
-		enemies_left_in_wave -= 1
+			spawn_timer.start()
+			enemies_left_in_wave -= 1
 
