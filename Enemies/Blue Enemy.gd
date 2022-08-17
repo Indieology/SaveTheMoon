@@ -1,7 +1,7 @@
 extends Area2D
 
 export var health: int = 2
-
+export var ship_speed: int = 100
 onready var moon_center = get_parent().get_parent().get_node("Pivot")
 
 onready var power_up = preload("res://Effects/PowerUp.tscn")
@@ -15,8 +15,10 @@ func _ready():
 func _physics_process(delta):
 	look_at(moon_center.global_position)
 	velocity = global_position.direction_to(moon_center.global_position)
-	if global_position.distance_to(moon_center.global_position) > 350:
-		global_position += velocity
+	if global_position.distance_to(moon_center.global_position) > 300:
+		global_position += velocity * ship_speed * delta
+	else:
+		pass #create shooting logic here
 	
 func _on_Blue_Enemy_area_entered(area):
 	health -= 1

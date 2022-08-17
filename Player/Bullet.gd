@@ -15,7 +15,7 @@ func _physics_process(delta):
 
 
 func _on_EnemyDetector_area_entered(area):
-	if area.get_parent().name == "PowerUp":
+	if area.get_parent().is_in_group("ignore_bullets"):
 		pass
 	else:
 		queue_free()

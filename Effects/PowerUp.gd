@@ -7,7 +7,7 @@ onready var moon_center: = get_parent().get_parent().get_node("Pivot")
 var velocity = Vector2.ZERO
 
 func _ready():
-	pass # Replace with function body.
+	add_to_group("ignore_bullets")
 
 func _physics_process(delta):
 	look_at(moon_center.global_position)
