@@ -4,8 +4,8 @@
 [ext_resource path="res://Player/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 6.99998
-height = 0.0
+radius = 6.0
+height = 2.0
 
 [node name="Bullet" type="KinematicBody2D"]
 script = ExtResource( 2 )
