@@ -21,6 +21,7 @@ func _process(delta):
 		player_gun.position.x = -7.75
 	else:
 		player_gun.position.x = 7.75
+		
 
 func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):
@@ -32,6 +33,7 @@ func _physics_process(delta):
 			play("Idle")
 	
 	if Input.is_action_just_pressed("shoot"):
+		play("Shoot")
 		var this_bullet = bullet.instance()
 		get_parent().get_parent().get_node("Bullets").add_child(this_bullet)
 		this_bullet.global_position = player_gun.global_position
@@ -47,6 +49,7 @@ func move_left(delta):
 	pivot.rotation_degrees -= player_speed * delta
 	flip_h = true
 	play("Walk")
+	
 
 func move_right(delta):
 	pivot.rotation_degrees += player_speed * delta

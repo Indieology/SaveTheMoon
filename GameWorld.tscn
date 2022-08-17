@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameWorld.gd" type="Script" id=2]
 [ext_resource path="res://World Art/Baren.png" type="Texture" id=3]
 [ext_resource path="res://World Art/SpaceBackground/frame2.png" type="Texture" id=4]
 [ext_resource path="res://UI/redblue (1).png" type="Texture" id=5]
-[ext_resource path="res://Enemies/Blue Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Effects/power pickup.png" type="Texture" id=7]
 [ext_resource path="res://UI/Minecraft.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://World Art/SpaceBackground/frame1.png" type="Texture" id=9]
@@ -29,7 +28,7 @@ animations = [ {
 radius = 102.005
 
 [node name="World" type="Node2D"]
-position = Vector2( 656, 280 )
+position = Vector2( 704, 280 )
 script = ExtResource( 2 )
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -67,7 +66,7 @@ text = "0"
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = ExtResource( 12 )
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 
@@ -75,7 +74,7 @@ flip_h = true
 position = Vector2( -496, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 flip_h = true
 
@@ -83,7 +82,7 @@ flip_h = true
 position = Vector2( -48.0001, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 flip_h = true
 flip_v = true
@@ -92,14 +91,14 @@ flip_v = true
 position = Vector2( 400, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Background2" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -48, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 flip_v = true
 
@@ -107,13 +106,12 @@ flip_v = true
 position = Vector2( 400, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 flip_h = true
 flip_v = true
 
 [node name="Moon" type="StaticBody2D" parent="."]
-position = Vector2( 32, 0 )
 collision_layer = 3
 collision_mask = 3
 
@@ -128,7 +126,7 @@ position = Vector2( -48, 80 )
 shape = SubResource( 2 )
 
 [node name="Pivot" type="Node2D" parent="."]
-position = Vector2( -16, 80 )
+position = Vector2( -48, 80 )
 
 [node name="Player" parent="Pivot" instance=ExtResource( 1 )]
 
@@ -138,31 +136,121 @@ position = Vector2( -16, 80 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Blue Enemy2" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( -296, -168 )
+[node name="SpawnPoints" type="Node2D" parent="."]
 
-[node name="Blue Enemy7" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( -56, -232 )
+[node name="Position2D" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 800, 128 )
 
-[node name="Blue Enemy8" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 344, 32 )
+[node name="Position2D2" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 800, 8 )
 
-[node name="Blue Enemy9" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( -296, 232 )
+[node name="Position2D5" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 768, -144 )
 
-[node name="Blue Enemy10" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( -376, 24 )
+[node name="Position2D7" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 720, -280 )
 
-[node name="Blue Enemy3" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 120, 328 )
+[node name="Position2D8" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 648, -400 )
 
-[node name="Blue Enemy4" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( -80, 336 )
+[node name="Position2D10" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 560, -504 )
 
-[node name="Blue Enemy5" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 272, 224 )
+[node name="Position2D11" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 472, -584 )
 
-[node name="Blue Enemy6" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 208, -168 )
+[node name="Position2D12" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 328, -584 )
+
+[node name="Position2D14" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 184, -584 )
+
+[node name="Position2D16" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 16, -584 )
+
+[node name="Position2D18" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -104, -584 )
+
+[node name="Position2D20" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -224, -584 )
+
+[node name="Position2D22" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -320, -584 )
+
+[node name="Position2D26" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -448, -584 )
+
+[node name="Position2D27" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -600, -560 )
+
+[node name="Position2D30" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -704, -456 )
+
+[node name="Position2D32" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -768, -344 )
+
+[node name="Position2D34" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -856, -176 )
+
+[node name="Position2D39" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -896, -8 )
+
+[node name="Position2D40" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -904, 144 )
+
+[node name="Position2D42" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -896, 304 )
+
+[node name="Position2D44" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -848, 464 )
+
+[node name="Position2D45" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -792, 592 )
+
+[node name="Position2D46" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -696, 696 )
+
+[node name="Position2D47" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -512, 760 )
+
+[node name="Position2D48" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -224, 752 )
+
+[node name="Position2D51" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -48, 752 )
+
+[node name="Position2D52" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 64, 752 )
+
+[node name="Position2D53" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 176, 760 )
+
+[node name="Position2D56" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 344, 760 )
+
+[node name="Position2D57" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 520, 752 )
+
+[node name="Position2D60" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 664, 664 )
+
+[node name="Position2D61" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 752, 536 )
+
+[node name="Position2D63" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 768, 384 )
+
+[node name="Position2D64" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 792, 256 )
+
+[node name="Position2D49" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -360, 752 )
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
 
 [editable path="Pivot/Player"]

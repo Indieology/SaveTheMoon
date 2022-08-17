@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var bullet_speed = 500
+export var bullet_speed = 600
 
 var velocity = Vector2.ZERO
 
@@ -11,4 +11,11 @@ func _physics_process(delta):
 	
 	
 	if $Lifetime.is_stopped():
+		queue_free()
+
+
+func _on_EnemyDetector_area_entered(area):
+	if area.get_parent().name == "PowerUp":
+		pass
+	else:
 		queue_free()

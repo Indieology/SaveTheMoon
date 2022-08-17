@@ -7,13 +7,17 @@ onready var moon_center = get_parent().get_parent().get_node("Pivot")
 onready var power_up = preload("res://Effects/PowerUp.tscn")
 onready var explosion = preload("res://Effects/Explosion/Explosion.tscn")
 
+var velocity = Vector2.ZERO
 
 func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
 	look_at(moon_center.global_position)
-
+	velocity = global_position.direction_to(moon_center.global_position)
+	if global_position.distance_to(moon_center.global_position) > 350:
+		global_position += velocity
+	
 func _on_Blue_Enemy_area_entered(area):
 	health -= 1
 	if health <= 0:
@@ -26,4 +30,3 @@ func _on_Blue_Enemy_area_entered(area):
 		this_explosion.call_deferred("set_start_position", global_position)
 		queue_free()
 	
-	area.get_parent().queue_free()
