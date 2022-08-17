@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameWorld.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://World Art/SpaceBackground/frame3.png" type="Texture" id=10]
 [ext_resource path="res://World Art/SpaceBackground/frame4.png" type="Texture" id=11]
 [ext_resource path="res://World Art/SpaceBackground/SpaceBackground.tres" type="SpriteFrames" id=12]
+[ext_resource path="res://World Art/Player Ship.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=8]
 size = 38
@@ -70,6 +71,7 @@ text = "0"
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = ExtResource( 12 )
+frame = 1
 playing = true
 flip_h = true
 
@@ -136,10 +138,17 @@ visible = false
 position = Vector2( -48, 80 )
 shape = SubResource( 9 )
 
+[node name="PlayerShip" type="Sprite" parent="Moon"]
+position = Vector2( -48, -79 )
+rotation = -1.5708
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2( -48, 80 )
 
 [node name="Player" parent="Pivot" instance=ExtResource( 1 )]
+position = Vector2( 7, -175 )
 
 [node name="Bullets" type="Node2D" parent="."]
 
