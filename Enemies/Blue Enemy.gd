@@ -6,6 +6,7 @@ onready var moon_center = get_parent().get_parent().get_node("Pivot")
 
 onready var power_up = preload("res://Effects/PowerUp.tscn")
 onready var explosion = preload("res://Effects/Explosion/Explosion.tscn")
+onready var bullet = preload("res://Player/Bullet.tscn")
 
 var velocity = Vector2.ZERO
 
@@ -15,11 +16,16 @@ func _ready():
 func _physics_process(delta):
 	look_at(moon_center.global_position)
 	velocity = global_position.direction_to(moon_center.global_position)
-	if global_position.distance_to(moon_center.global_position) > 300:
+	if global_position.distance_to(moon_center.global_position) > 280:
 		global_position += velocity * ship_speed * delta
 	else:
-		pass #create shooting logic here
-	
+		if $ShootTimer.is_stopped():
+			var this_bullet = bullet.instance()
+			get_parent().get_parent().add_child(this_bullet)
+			this_bullet.global_position = $GunLocation.global_position
+			this_bullet.look_at(moon_center.global_position)
+			this_bullet.velocity = moon_center.global_position - $GunLocation.global_position
+			$ShootTimer.start()
 func _on_Blue_Enemy_area_entered(area):
 	health -= 1
 	if health <= 0:

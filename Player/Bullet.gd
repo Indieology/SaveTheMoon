@@ -4,6 +4,7 @@ export var bullet_speed = 600
 
 var velocity = Vector2.ZERO
 
+
 func _physics_process(delta):
 	
 	#can use collision_info to detect collisions with the bullet
@@ -17,5 +18,7 @@ func _physics_process(delta):
 func _on_EnemyDetector_area_entered(area):
 	if area.get_parent().is_in_group("ignore_bullets"):
 		pass
+	elif area.get_parent().is_in_group("moon"):
+		print("moon hit") #damage moon here
 	else:
 		queue_free()
