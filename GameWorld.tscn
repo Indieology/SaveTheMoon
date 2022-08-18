@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameWorld.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://World Art/SpaceBackground/frame4.png" type="Texture" id=11]
 [ext_resource path="res://World Art/SpaceBackground/SpaceBackground.tres" type="SpriteFrames" id=12]
 [ext_resource path="res://World Art/Player Ship.png" type="Texture" id=13]
+[ext_resource path="res://PlayerShip.gd" type="Script" id=14]
 
 [sub_resource type="DynamicFont" id=8]
 size = 38
@@ -31,6 +32,10 @@ radius = 102.005
 
 [sub_resource type="CircleShape2D" id=9]
 radius = 112.0
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 6.75002
+height = 8.0
 
 [node name="World" type="Node2D"]
 position = Vector2( 704, 280 )
@@ -71,7 +76,6 @@ text = "0"
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = ExtResource( 12 )
-frame = 1
 playing = true
 flip_h = true
 
@@ -79,7 +83,6 @@ flip_h = true
 position = Vector2( -496, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_h = true
 
@@ -87,7 +90,6 @@ flip_h = true
 position = Vector2( -48.0001, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_h = true
 flip_v = true
@@ -96,14 +98,12 @@ flip_v = true
 position = Vector2( 400, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 
 [node name="Background2" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -48, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_v = true
 
@@ -111,7 +111,6 @@ flip_v = true
 position = Vector2( 400, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_h = true
 flip_v = true
@@ -143,6 +142,13 @@ position = Vector2( -48, -79 )
 rotation = -1.5708
 scale = Vector2( 4, 4 )
 texture = ExtResource( 13 )
+script = ExtResource( 14 )
+
+[node name="PlayerDetector" type="Area2D" parent="Moon/PlayerShip"]
+
+[node name="DetectorShape" type="CollisionShape2D" parent="Moon/PlayerShip/PlayerDetector"]
+position = Vector2( -3.75, -1.52588e-05 )
+shape = SubResource( 10 )
 
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2( -48, 80 )
@@ -272,6 +278,8 @@ one_shot = true
 autostart = true
 
 [connection signal="area_entered" from="Moon/BulletDetector" to="Moon" method="_on_BulletDetector_area_entered"]
+[connection signal="area_entered" from="Moon/PlayerShip/PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
+[connection signal="area_exited" from="Moon/PlayerShip/PlayerDetector" to="." method="_on_PlayerDetector_area_exited"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
 
 [editable path="Pivot/Player"]

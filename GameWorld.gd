@@ -10,6 +10,7 @@ onready var spawn_timer = $EnemySpawnTimer
 onready var enemy1 = preload("res://Enemies/Blue Enemy.tscn")
 
 var enemies_in_last_wave: int
+var player_near_ship = true
 
 func _ready():
 	enemies_in_last_wave = enemies_left_in_wave
@@ -36,7 +37,18 @@ func _on_EnemySpawnTimer_timeout():
 			spawn_timer.start()
 			enemies_left_in_wave -= 1
 	else:
-		if Input.is_action_pressed("shoot"): # and is near player ship
-			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
+		if Input.is_action_pressed("shoot") and player_near_ship:
 			 # show upgrade menu and play animation after going to sleep animation
+			
+			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
 
+func _on_PlayerDetector_area_entered(area):
+	if area.get_parent().name == "Player":
+		player_near_ship = true
+		print("player near ship")
+
+
+func _on_PlayerDetector_area_exited(area):
+	if area.get_parent().name == "Player":
+		player_near_ship = false
+		print("player away from ship")
