@@ -31,9 +31,12 @@ func _physics_process(delta):
 		move_right(delta)
 	else:
 		if player_start_timer.is_stopped():
-			play("Idle")
+			if Input.is_action_pressed("shoot"):
+				pass
+			else:
+				play("Idle")
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		if shoot_delay_timer.is_stopped():
 			shoot_delay_timer.start()
 			play("Shoot")

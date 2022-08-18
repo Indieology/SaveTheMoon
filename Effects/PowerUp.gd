@@ -14,6 +14,7 @@ func _physics_process(delta):
 	
 	velocity = global_position.direction_to(moon_center.global_position) * movement_speed
 	
+
 	move_and_slide(velocity)
 
 func set_start_position(position):
