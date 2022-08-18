@@ -9,6 +9,7 @@ var power: int = 0
 onready var pivot = get_parent()
 onready var player_start_timer = $ReadyTimer
 onready var player_gun = $Gun
+onready var shoot_delay_timer = $ShootDelay
 onready var energy_label = get_parent().get_parent().get_node("UI/CurrentEnergy")
 
 onready var bullet = preload("res://Player/Bullet.tscn")
@@ -33,17 +34,19 @@ func _physics_process(delta):
 			play("Idle")
 	
 	if Input.is_action_just_pressed("shoot"):
-		play("Shoot")
-		var this_bullet = bullet.instance()
-		get_parent().get_parent().get_node("Bullets").add_child(this_bullet)
-		this_bullet.global_position = player_gun.global_position
-		
-		if flip_h == true:
-			this_bullet.bullet_speed *= -1
-		
-		
-		this_bullet.velocity = $ShootDirection.global_position - player_gun.global_position
-		this_bullet.look_at($ShootDirection.global_position)
+		if shoot_delay_timer.is_stopped():
+			shoot_delay_timer.start()
+			play("Shoot")
+			var this_bullet = bullet.instance()
+			get_parent().get_parent().get_node("Bullets").add_child(this_bullet)
+			this_bullet.global_position = player_gun.global_position
+			
+			if flip_h == true:
+				this_bullet.bullet_speed *= -1
+			
+			
+			this_bullet.velocity = $ShootDirection.global_position - player_gun.global_position
+			this_bullet.look_at($ShootDirection.global_position)
 
 func move_left(delta):
 	pivot.rotation_degrees -= player_speed * delta
