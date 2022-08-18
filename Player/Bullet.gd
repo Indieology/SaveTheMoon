@@ -23,5 +23,7 @@ func _on_EnemyDetector_area_entered(area):
 	elif area.get_parent().is_in_group("moon"):
 		print("moon hit") #damage moon here
 		queue_free()
+	elif area.get_parent().name == "PlayerShip":
+		pass
 	else:
 		queue_free()

@@ -17,6 +17,13 @@ func _ready():
 
 #-270 -160
 
+func _physics_process(delta):
+	if player_near_ship and get_node("Enemies").get_child_count() <= 0 and enemies_left_in_wave <= 0:
+		print("new wave started")
+		# show upgrade menu and play animation after going to sleep animation
+		
+		enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
+		spawn_timer.start()
 
 func _on_EnemySpawnTimer_timeout():
 	#select random spawn point
@@ -36,11 +43,6 @@ func _on_EnemySpawnTimer_timeout():
 		
 			spawn_timer.start()
 			enemies_left_in_wave -= 1
-	else:
-		if Input.is_action_pressed("shoot") and player_near_ship:
-			 # show upgrade menu and play animation after going to sleep animation
-			
-			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
 
 func _on_PlayerDetector_area_entered(area):
 	if area.get_parent().name == "Player":

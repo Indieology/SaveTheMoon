@@ -76,6 +76,7 @@ text = "0"
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = ExtResource( 12 )
+frame = 3
 playing = true
 flip_h = true
 
@@ -83,6 +84,7 @@ flip_h = true
 position = Vector2( -496, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_h = true
 
@@ -90,6 +92,7 @@ flip_h = true
 position = Vector2( -48.0001, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_h = true
 flip_v = true
@@ -98,12 +101,14 @@ flip_v = true
 position = Vector2( 400, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 
 [node name="Background2" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -48, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_v = true
 
@@ -111,6 +116,7 @@ flip_v = true
 position = Vector2( 400, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 flip_h = true
 flip_v = true
