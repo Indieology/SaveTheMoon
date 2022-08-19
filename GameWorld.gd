@@ -7,12 +7,14 @@ export var wave_increment_amount: int = 5
 onready var spawn_points = $SpawnPoints
 onready var spawn_timer = $EnemySpawnTimer
 onready var rest_label = $UI/Rest
+onready var upgrade_screen = get_node("UI/Upgrade Screen")
 
 onready var enemy1 = preload("res://Enemies/Blue Enemy.tscn")
 
 var enemies_in_last_wave: int
 var player_near_ship = true
 var wave_ended = false
+var is_currently_upgrading = false
 var current_day = 1
 
 func _ready():
@@ -34,7 +36,8 @@ func _physics_process(delta):
 			if spawn_timer.wait_time >= 1:
 				spawn_timer.wait_time -= .5
 			
-			spawn_timer.start()
+			if is_currently_upgrading == false:
+				spawn_timer.start()
 
 func _on_EnemySpawnTimer_timeout():
 	#select random spawn point
@@ -68,4 +71,11 @@ func _on_PlayerDetector_area_exited(area):
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	upgrade_screen.show()
+	is_currently_upgrading = true
+
+#upgrade screen "close" button
+func _on_Button_pressed():
+	upgrade_screen.hide()
 	wave_ended = false
+	is_currently_upgrading = false
