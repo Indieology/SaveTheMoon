@@ -37,7 +37,9 @@ func _physics_process(delta):
 				play("Idle")
 	
 	if Input.is_action_pressed("shoot"):
-		if shoot_delay_timer.is_stopped():
+		if get_parent().get_parent().wave_ended == true:
+			pass 
+		elif shoot_delay_timer.is_stopped():
 			shoot_delay_timer.start()
 			play("Shoot")
 			var this_bullet = bullet.instance()

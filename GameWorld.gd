@@ -12,6 +12,7 @@ onready var enemy1 = preload("res://Enemies/Blue Enemy.tscn")
 
 var enemies_in_last_wave: int
 var player_near_ship = true
+var wave_ended = false
 
 func _ready():
 	enemies_in_last_wave = enemies_left_in_wave
@@ -20,12 +21,15 @@ func _ready():
 
 func _physics_process(delta):
 	if get_node("Enemies").get_child_count() <= 0 and enemies_left_in_wave <= 0:
+		wave_ended = true
 		rest_label.show()
-		if player_near_ship:
+		if player_near_ship and Input.is_action_pressed("shoot"):
+			$UI/AnimationPlayer.play("FadeToBlack")
 			rest_label.hide()
 			# show upgrade menu and play animation after going to sleep animation
 			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
 			spawn_timer.start()
+			wave_ended = false
 
 func _on_EnemySpawnTimer_timeout():
 	#select random spawn point
