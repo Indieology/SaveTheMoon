@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 export var bullet_speed = 600
 
+onready var moon = get_parent().get_parent().get_node("Moon")
+
 var velocity = Vector2.ZERO
 
 func _ready():
@@ -21,7 +23,7 @@ func _on_EnemyDetector_area_entered(area):
 	if area.get_parent().is_in_group("ignore_bullets"):
 		pass
 	elif area.get_parent().is_in_group("moon"):
-		print("moon hit") #damage moon here
+		moon.damage(5)
 		queue_free()
 	elif area.get_parent().name == "PlayerShip":
 		pass

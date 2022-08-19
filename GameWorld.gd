@@ -7,7 +7,11 @@ export var wave_increment_amount: int = 5
 onready var spawn_points = $SpawnPoints
 onready var spawn_timer = $EnemySpawnTimer
 onready var rest_label = $UI/Rest
+onready var moon = $Moon
+onready var current_energy = $UI/CurrentEnergy
+
 onready var upgrade_screen = get_node("UI/Upgrade Screen")
+onready var health_upgrade_cost = upgrade_screen.get_node("HBoxContainer/IncreaseHealth/HBoxContainer/Amount")
 
 onready var enemy1 = preload("res://Enemies/Blue Enemy.tscn")
 
@@ -81,3 +85,12 @@ func _on_Button_pressed():
 	wave_ended = false
 	is_currently_upgrading = false
 	_on_EnemySpawnTimer_timeout()
+
+
+func _on_IncreaseHealth_pressed():
+	if current_energy.text.to_int() >= health_upgrade_cost.text.to_int():
+		print("health purchased")
+		moon.increase_max_health(10)
+		current_energy.text = str(current_energy.text.to_int() - health_upgrade_cost.text.to_int())
+		var update_cost = health_upgrade_cost.text.to_int() + 5
+		health_upgrade_cost.text = str(update_cost)

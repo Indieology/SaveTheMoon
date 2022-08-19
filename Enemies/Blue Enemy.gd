@@ -21,7 +21,7 @@ func _physics_process(delta):
 	else:
 		if $ShootTimer.is_stopped():
 			var this_bullet = bullet.instance()
-			get_parent().get_parent().add_child(this_bullet)
+			get_parent().get_parent().get_node("Bullets").add_child(this_bullet)
 			this_bullet.global_position = $GunLocation.global_position
 			this_bullet.look_at(moon_center.global_position)
 			this_bullet.velocity = moon_center.global_position - $GunLocation.global_position
