@@ -13,6 +13,7 @@ onready var enemy1 = preload("res://Enemies/Blue Enemy.tscn")
 var enemies_in_last_wave: int
 var player_near_ship = true
 var wave_ended = false
+var current_day = 1
 
 func _ready():
 	enemies_in_last_wave = enemies_left_in_wave
@@ -25,13 +26,17 @@ func _physics_process(delta):
 		rest_label.show()
 		if player_near_ship and Input.is_action_pressed("shoot"):
 			$UI/AnimationPlayer.play("FadeToBlack")
+			current_day += 1
+			$UI/CurrentDayNumber.text = str(current_day)
 			rest_label.hide()
 			# show upgrade menu and play animation after going to sleep animation
 			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
-			spawn_timer.start()
 			wave_ended = false
 			if spawn_timer.wait_time >= 1:
 				spawn_timer.wait_time -= .5
+				print("spawn time decreased to ")
+				print(spawn_timer.wait_time)
+			spawn_timer.start()
 
 func _on_EnemySpawnTimer_timeout():
 	#select random spawn point
