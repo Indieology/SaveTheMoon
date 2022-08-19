@@ -30,6 +30,8 @@ func _physics_process(delta):
 			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
 			spawn_timer.start()
 			wave_ended = false
+			if spawn_timer.wait_time >= 1:
+				spawn_timer.wait_time -= .5
 
 func _on_EnemySpawnTimer_timeout():
 	#select random spawn point
