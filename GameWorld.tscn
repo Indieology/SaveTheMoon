@@ -159,7 +159,7 @@ visible = false
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = ExtResource( 12 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
