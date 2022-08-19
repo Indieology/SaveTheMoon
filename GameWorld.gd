@@ -31,10 +31,12 @@ func _physics_process(delta):
 			current_day += 1
 			$UI/CurrentDayNumber.text = str(current_day)
 			rest_label.hide()
-			# show upgrade menu and play animation after going to sleep animation
+			is_currently_upgrading = true
+			
 			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
 			if spawn_timer.wait_time >= 1:
 				spawn_timer.wait_time -= .5
+			
 			
 			if is_currently_upgrading == false:
 				spawn_timer.start()
@@ -72,10 +74,10 @@ func _on_PlayerDetector_area_exited(area):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	upgrade_screen.show()
-	is_currently_upgrading = true
 
 #upgrade screen "close" button
 func _on_Button_pressed():
 	upgrade_screen.hide()
 	wave_ended = false
 	is_currently_upgrading = false
+	_on_EnemySpawnTimer_timeout()
