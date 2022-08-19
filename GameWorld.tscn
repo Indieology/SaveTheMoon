@@ -155,7 +155,7 @@ anims/RESET = SubResource( 15 )
 position = Vector2( -496, -88 )
 scale = Vector2( 7, 7 )
 frames = ExtResource( 12 )
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 
@@ -163,7 +163,6 @@ flip_h = true
 position = Vector2( -496, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_h = true
 
@@ -171,7 +170,6 @@ flip_h = true
 position = Vector2( -48.0001, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_h = true
 flip_v = true
@@ -180,14 +178,12 @@ flip_v = true
 position = Vector2( 400, 360 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 
 [node name="Background2" type="AnimatedSprite" parent="SpaceBackground"]
 position = Vector2( -48, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_v = true
 
@@ -195,7 +191,6 @@ flip_v = true
 position = Vector2( 400, -88 )
 scale = Vector2( 7, 7 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 flip_h = true
 flip_v = true
@@ -363,6 +358,7 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[connection signal="animation_finished" from="UI/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="Moon/BulletDetector" to="Moon" method="_on_BulletDetector_area_entered"]
 [connection signal="area_entered" from="Moon/PlayerShip/PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
 [connection signal="area_exited" from="Moon/PlayerShip/PlayerDetector" to="." method="_on_PlayerDetector_area_exited"]

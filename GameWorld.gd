@@ -31,11 +31,9 @@ func _physics_process(delta):
 			rest_label.hide()
 			# show upgrade menu and play animation after going to sleep animation
 			enemies_left_in_wave = enemies_in_last_wave + wave_increment_amount
-			wave_ended = false
 			if spawn_timer.wait_time >= 1:
 				spawn_timer.wait_time -= .5
-				print("spawn time decreased to ")
-				print(spawn_timer.wait_time)
+			
 			spawn_timer.start()
 
 func _on_EnemySpawnTimer_timeout():
@@ -67,3 +65,7 @@ func _on_PlayerDetector_area_exited(area):
 	if area.get_parent().name == "Player":
 		player_near_ship = false
 		print("player away from ship")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	wave_ended = false
