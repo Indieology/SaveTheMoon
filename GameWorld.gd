@@ -14,6 +14,7 @@ onready var player = $Pivot/Player
 onready var upgrade_screen = get_node("UI/Upgrade Screen")
 onready var health_upgrade_cost = upgrade_screen.get_node("HBoxContainer/IncreaseHealth/HBoxContainer/Amount")
 onready var boot_upgrade_cost = upgrade_screen.get_node("HBoxContainer/BootUpgrade/HBoxContainer/Amount")
+onready var damage_upgrade_cost = upgrade_screen.get_node("HBoxContainer/DamageUpgrade/HBoxContainer/Amount")
 
 onready var enemy1 = preload("res://Enemies/Blue Enemy.tscn")
 
@@ -89,7 +90,6 @@ func _on_Button_pressed():
 
 func _on_IncreaseHealth_pressed():
 	if current_energy.text.to_int() >= health_upgrade_cost.text.to_int():
-		print("health purchased")
 		moon.increase_max_health(10)
 		current_energy.text = str(current_energy.text.to_int() - health_upgrade_cost.text.to_int())
 		var update_cost = health_upgrade_cost.text.to_int() + 5
@@ -98,7 +98,15 @@ func _on_IncreaseHealth_pressed():
 
 func _on_BootUpgrade_pressed():
 	if current_energy.text.to_int() >= boot_upgrade_cost.text.to_int():
-		print("boots upgraded")
 		player.player_speed += 5
+		current_energy.text = str(current_energy.text.to_int() - boot_upgrade_cost.text.to_int())
 		var update_cost = boot_upgrade_cost.text.to_int() + 5
 		boot_upgrade_cost.text = str(update_cost)
+
+
+func _on_DamageUpgrade_pressed():
+	if current_energy.text.to_int() >= damage_upgrade_cost.text.to_int():
+		player.player_damage += 1
+		current_energy.text = str(current_energy.text.to_int() - damage_upgrade_cost.text.to_int())
+		var update_cost = damage_upgrade_cost.text.to_int() + 10
+		damage_upgrade_cost.text = str(update_cost)

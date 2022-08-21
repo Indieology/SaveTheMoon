@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var bullet_speed = 600
+export var damage = 1
 
 onready var moon = get_parent().get_parent().get_node("Moon")
 

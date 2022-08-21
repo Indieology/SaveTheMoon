@@ -3,6 +3,7 @@ extends AnimatedSprite
 #can be spent to upgrade your moon health(make moon bigger?), add a turret to a predefined set of locations if there is one left,         boot upgrade for speed?  
 
 export var player_speed : int = 60
+export var player_damage = 1
 
 var power: int = 0
 
@@ -52,6 +53,7 @@ func _physics_process(delta):
 			
 			this_bullet.velocity = $ShootDirection.global_position - player_gun.global_position
 			this_bullet.look_at($ShootDirection.global_position)
+			this_bullet.damage = player_damage
 
 func move_left(delta):
 	pivot.rotation_degrees -= player_speed * delta

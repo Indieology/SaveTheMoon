@@ -11,7 +11,7 @@ onready var bullet = preload("res://Player/Bullet.tscn")
 var velocity = Vector2.ZERO
 
 func _ready():
-	pass # Replace with function body.
+	add_to_group("enemies")
 
 func _physics_process(delta):
 	look_at(moon_center.global_position)
@@ -27,7 +27,7 @@ func _physics_process(delta):
 			this_bullet.velocity = moon_center.global_position - $GunLocation.global_position
 			$ShootTimer.start()
 func _on_Blue_Enemy_area_entered(area):
-	health -= 1
+	health -= area.get_parent().damage
 	if health <= 0:
 		var this_power_up = power_up.instance()
 		get_parent().get_parent().get_node("PowerUps").call_deferred("add_child", this_power_up)
