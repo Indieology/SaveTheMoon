@@ -9,9 +9,11 @@ onready var spawn_timer = $EnemySpawnTimer
 onready var rest_label = $UI/Rest
 onready var moon = $Moon
 onready var current_energy = $UI/CurrentEnergy
+onready var player = $Pivot/Player
 
 onready var upgrade_screen = get_node("UI/Upgrade Screen")
 onready var health_upgrade_cost = upgrade_screen.get_node("HBoxContainer/IncreaseHealth/HBoxContainer/Amount")
+onready var boot_upgrade_cost = upgrade_screen.get_node("HBoxContainer/BootUpgrade/HBoxContainer/Amount")
 
 onready var enemy1 = preload("res://Enemies/Blue Enemy.tscn")
 
@@ -67,13 +69,11 @@ func _on_EnemySpawnTimer_timeout():
 func _on_PlayerDetector_area_entered(area):
 	if area.get_parent().name == "Player":
 		player_near_ship = true
-		print("player near ship")
 
 
 func _on_PlayerDetector_area_exited(area):
 	if area.get_parent().name == "Player":
 		player_near_ship = false
-		print("player away from ship")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -94,3 +94,11 @@ func _on_IncreaseHealth_pressed():
 		current_energy.text = str(current_energy.text.to_int() - health_upgrade_cost.text.to_int())
 		var update_cost = health_upgrade_cost.text.to_int() + 5
 		health_upgrade_cost.text = str(update_cost)
+
+
+func _on_BootUpgrade_pressed():
+	if current_energy.text.to_int() >= boot_upgrade_cost.text.to_int():
+		print("boots upgraded")
+		player.player_speed += 5
+		var update_cost = boot_upgrade_cost.text.to_int() + 5
+		boot_upgrade_cost.text = str(update_cost)

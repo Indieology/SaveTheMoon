@@ -68,3 +68,4 @@ func increase_power():
 	power += 1
 	energy_label.text = str(power)
 
+
